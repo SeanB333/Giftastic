@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="jumbotron jumbotron-fluid">
         <h1>Giftastic buttons</h1>
 
 
@@ -21,13 +21,15 @@
             <!-- JS btns will be displayed here -->
         </div>
 
-        <form id="btnView">
-            <label for="btnAdd">Add a Button</label>
-            <input type="text" id="btnInput"><br>
-            <input id="addBtn" type="submit" value="Add a Button">
+        <form id="btnView" class="form-group">
+            <label for="btnAdd" class="m-2"><h3>Add a Sport</h3></label>
+            <input type="text" class="form-control w-25 m-2" id="btnInput"><br>
+            <input id="addBtn" class="btn btn-dark m-2" type="submit" value="Add a Button">
         </form>
+        </div>
+        <div id="gifsPull">
 
-        <div id="gifsPull"></div>
+        
 
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
