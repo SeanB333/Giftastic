@@ -1,16 +1,29 @@
 $(document).ready(function () {
 
-  var gitButtons = ["A", "B", "C", "D"];
+  var gitButtons = ["snowboards", "skateboards", "bikes", "skydive"];
 
   function getGiphyInfo() {
     var search = $(this).attr("data-name");
-    var queryURL = `https://api.giphy.com/v1/gifs/random?api_key=8qTEA6lp3g19Ye08Lcr7r9vanv9kwtLH&tag=${search}&limit=10`;
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=
+    ${search}&api_key=dc6zaTOxFJmzC&limit=10`;
 
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      console.log(response);
+      var gifPull = response.data;
+      for (var i = 0; i < gifPull.length; i++) {
+        if (gifPull[i].rating !== "r" && gifPull[i].rating !== "pg-13") {
+          var gifDiv = $("<div>");
+          var rating = gifPull[i].rating;
+          var p = $("<p>").text("Rating: " + rating);
+          var personImage = $("<img>");
+          personImage.attr("src", gifPull[i].images.fixed_height.url);
+          gifDiv.append(p);
+          gifDiv.append(personImage);
+          $("#gifsPull").prepend(gifDiv);
+        }
+      }
     });
   }
 
